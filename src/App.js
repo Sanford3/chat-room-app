@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef, useState } from "react";
+import "./App.css";
+import "./Styles.css";
+import Authentication from "./components/Authentication";
+import Cookies from "universal-cookie/cjs/Cookies";
+import Chat from "./components/Chat";
+const cookies = new Cookies();
 
 function App() {
+  const [isAuth, setIsAuth] = useState(cookies.get("auth-token"));
+  const [room, setRoom] = useState(null);
+
+  const roomInputRef = useRef(null);
+
+  if (!isAuth) {
+    return (
+      <div className="App">
+        <Authentication setIsAuth={ setIsAuth} />
+      </div>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {room ? (
+        <div><Chat room={ room} /></div>
+      ) : (
+        <div className="room">
+          <div className="container">
+            <h1>Enter Room Name</h1>
+            <input type="text" ref={roomInputRef} />
+            <button onClick={() => setRoom(roomInputRef.current.value)}>
+              Create Room
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

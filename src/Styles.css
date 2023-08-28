@@ -1,0 +1,47 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.room{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    height: 100vh;
+    border: 2px solid black;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+}
+
+.container{
+    border: 2px solid blue;
+    border-radius: 10px;
+    height: 70vh;
+    width: 30vw;
+    background-color: rgb(116, 116, 234);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container input{
+    width: 80%;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+.container button{
+    background-color: rgb(47, 47, 234);
+    /* background-color: #8EC5FC; */
+    color: white;
+    /* color: blue; */
+    border: none;
+    height: 40px;
+    width: 80px;
+    border-radius: 5px;
+}
